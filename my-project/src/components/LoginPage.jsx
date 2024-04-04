@@ -1,5 +1,10 @@
 
+
 const Login = function (props) {
+
+
+
+
   return (
     /* Image from unsplash 
         URL = https://unsplash.com/photos/red-and-black-racing-car-on-race-track-l87JKfXFcm4
@@ -16,16 +21,16 @@ const Login = function (props) {
           <form className="text-left">
             <div className="mb-10">
               <label className="block text-xl font-semibold text-gray-700 mb-1">Email Address</label>
-              <input type="email" id="email" name="email" className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400" />
-                <a href="#" className="text-blue-600 hover:underline">Forgot Email?</a>   
+              <input type="email" id="email" name="email" className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400" placeholder="Email"/>
+                <a href="" className="text-blue-600 hover:underline">Forgot Email?</a>   
             </div>
             <div className="mb-10">
               <label className="block text-xl font-semibold text-gray-700 mb-1">Password</label>
-              <input type="password" id="password" name="password" className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400" />
-              <a href="#" className="text-blue-600 hover:underline">Forgot Password?</a>
+              <input type="password" id="password" name="password" className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400" placeholder="Password"/>
+              <a href="" className="text-blue-600 hover:underline">Forgot Password?</a>
             </div>
             <div className="flex justify-between">
-            <button type="button" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105">Login</button>
+            <button type="button" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" onClick={props.handleLogin}>Login</button>
             <div className="w-4"></div> 
             <button type="button" className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105">Register</button>
             </div>
