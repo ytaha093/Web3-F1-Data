@@ -1,15 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./App.css";
 import Login from './components/LoginPage.jsx';
+import { AppContext } from "./context.jsx";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    console.log("user is logged is" + isLoggedIn)
-    setIsLoggedIn(true);
-    console.log("user is logged is" + isLoggedIn)
-  };
+  const {isLoggedIn, setIsLoggedIn } = useContext(AppContext)
+  
 
   if (isLoggedIn) {
     return (
@@ -19,7 +15,7 @@ function App() {
   else {
       return (
     <> 
-      <Login handleLogin={handleLogin} />
+      <Login/>
     </>
   );
   }

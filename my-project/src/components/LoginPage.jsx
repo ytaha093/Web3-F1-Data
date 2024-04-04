@@ -1,8 +1,8 @@
-
+import {useContext} from "react";
+import { AppContext } from "../context.jsx";
 
 const Login = function (props) {
-
-
+  const {isLoggedIn, setIsLoggedIn } = useContext(AppContext)
 
 
   return (
@@ -30,7 +30,7 @@ const Login = function (props) {
               <a href="" className="text-blue-600 hover:underline">Forgot Password?</a>
             </div>
             <div className="flex justify-between">
-            <button type="button" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" onClick={props.handleLogin}>Login</button>
+              <button type="button" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" onClick={() => {setIsLoggedIn(true)}}>Login</button>
             <div className="w-4"></div> 
             <button type="button" className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105">Register</button>
             </div>
