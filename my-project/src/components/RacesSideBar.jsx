@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import {useContext} from "react";
-import {AppContext} from "../context.jsx";
+import { useContext } from "react";
+import { AppContext } from "../context.jsx";
+import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 
 const SideBar = (props) => {
-  const {data, setData, supabase} = useContext(AppContext);
+  const { data, setData, supabase } = useContext(AppContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data, error } = await supabase
-          .from("races")
-          .select("*");
-        
+        const { data, error } = await supabase.from("races").select("*");
+
         if (error) {
           throw error;
         }
@@ -26,34 +25,48 @@ const SideBar = (props) => {
   }, []);
 
   return (
-    <div className="flex">
-      <div className="min-w-96 p-4 border-8 border-black rounded-lg">
-        <h1 className="text-lg font-bold mb-4">[Year] Races</h1>
-        <ul>
-          {data.map((race) => (
-            <li key={race.raceId} className="m-4 flex flex-row">
-              <span className="font-semibold">Race ID:</span> {race.raceId}
-              <span className="ml-2 font-semibold">Name:</span> {race.name}
-              <div className="w-4"></div>
-              <div className="flex flex-row">
-                <button
-                  type="button"
-                  className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                  Results
-                </button>
-                <div className="w-4"></div>
-                <button
-                  type="button"
-                  className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                  Standings
-                </button>
-              </div>
-            </li>
-          ))}
-          
-        </ul>
+    <div className="flex justify-left h-screen pt-6 pl-6">
+      <div className="bg-white rounded-lg shadow-2xl border border-gray-200 p-6 max-h-full overflow-y-auto">
+        <h1 className="text-3xl px-4 py-3 text-center text-gray-700 uppercase tracking-wider font-semibold">Races</h1>
+        <div className="table-container">
+          <table className="w-full">
+            <thead className="sticky top-0 bg-gray-200 z-50">
+              <tr>
+                <th className="px-4 py-3 text-left text-gray-700 uppercase tracking-wider font-semibold">
+                  Round
+                </th>
+                <th className="px-4 py-3 text-left text-gray-700 uppercase tracking-wider font-semibold">
+                  Name
+                </th>
+                <th className="px-4 py-3 text-left text-gray-700 uppercase tracking-wider font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((race) => (
+                <tr key={race.raceId} className="border-b hover:bg-gray-100">
+                  <td className="px-4 py-2">{race.raceId}</td>
+                  <td className="px-4 py-2">{race.name}</td>
+                  <td className="px-4 py-2 flex gap-2">
+                    <button
+                      type="button"
+                      className="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                    >
+                      Results
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                    >
+                      Standings
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
