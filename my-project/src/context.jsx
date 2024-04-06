@@ -9,7 +9,7 @@ export const AppContext = createContext();
 export const TheContext =  ({children}) => {
 
   const supabase = createClient(supabaseUrl, supabaseKey);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [data, setData] = useState([]);
 
   return (
