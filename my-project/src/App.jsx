@@ -2,22 +2,23 @@ import { useState, useContext } from "react";
 import "./App.css";
 import Login from './components/LoginPage.jsx';
 import { AppContext } from "./context.jsx";
+import Dashboard from "./components/Dashboard.jsx";
 
 function App() {
-  const {isLoggedIn, setIsLoggedIn } = useContext(AppContext)
-  
+  const { isLoggedIn, setIsLoggedIn } = useContext(AppContext)
+
 
   if (isLoggedIn) {
     return (
-      <h1> HELLO WORLD</h1>
+      <Dashboard />
     );
   }
   else {
-      return (
-    <> 
-      <Login/>
-    </>
-  );
+    return (
+      <>
+        <Login />
+      </>
+    );
   }
 
 }
