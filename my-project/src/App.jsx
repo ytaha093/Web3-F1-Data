@@ -11,8 +11,8 @@ function App() {
 
   if (isLoggedIn) {
     return (
-      //<Dashboard />
-      <SideBar />
+      <Dashboard />
+      //<SideBar />
     );
   }
   else {
