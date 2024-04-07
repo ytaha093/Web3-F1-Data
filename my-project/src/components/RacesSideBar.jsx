@@ -25,8 +25,8 @@ const SideBar = (props) => {
   }, []);
 
   return (
-    <div className="flex justify-left h-screen pt-6 pl-6">
-      <div className="bg-white rounded-lg shadow-2xl border border-gray-200 p-6 max-h-full overflow-y-auto">
+    <div className="flex justify-left h-fill">
+      <div className="bg-whiteborder max-h-full overflow-y-auto">
         <h1 className="text-3xl px-4 py-3 text-center text-gray-700 uppercase tracking-wider font-semibold">Races</h1>
         <div className="table-container">
           <table className="w-full">
