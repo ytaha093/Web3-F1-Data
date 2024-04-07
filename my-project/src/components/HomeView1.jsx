@@ -5,7 +5,7 @@ import SideBar from './RacesSideBar.jsx';
 import Header from './Header.jsx';
 import { useState } from 'react';
 
-export const HomeView1 = () => {
+export const HomeView1 = (props) => {
 
 
   const [year, setYear] = useState(2024)
@@ -18,25 +18,9 @@ export const HomeView1 = () => {
 
 
   return (
-    // <div className="flex w-screen h-screen p-4 flex-wrap justify-between content-around">
-    //   <div className="border-2 bg-white shadow-md rounded-md h-[11%] w-screen">
-    //     <Header />
-    //   </div>
-    //   < div className="border-2 bg-white shadow-md rounded-md h-[85%] w-[28%]" >
-    //     <SideBar />
-    //   </div >
-    //   <div className="border-2 bg-white shadow-md rounded-md h-[85%] w-[71%]">
-
-    //   </div>
-    // </div>
-    // <div>header</div>
-    // <div>SideBar</div> 
-    // <div>TheRest</div>
     <>
-      <Header />
-
-      <SideBar />
-
+      <Header supabase={props.supabase} />
+      <SideBar supabase={props.supabase} />
     </>
   );
 }

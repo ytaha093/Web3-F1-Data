@@ -6,20 +6,19 @@ import Dashboard from "./components/Dashboard.jsx";
 import SideBar from "./components/RacesSideBar.jsx";
 import HomeView1 from "./components/HomeView1.jsx";
 
-function App() {
+function App(props) {
   const { isLoggedIn, setIsLoggedIn } = useContext(AppContext)
 
 
   if (isLoggedIn) {
     return (
-      <HomeView1 />
-      //<SideBar />
+      <HomeView1 supabase={props.supabase}/>
     );
   }
   else {
     return (
       <>
-        <Login />
+        <Login supabase={supabase}/>
       </>
     );
   }
