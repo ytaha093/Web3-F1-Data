@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../context.jsx";
 import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 
 const SideBar = (props) => {
-  const { data, setData, supabase } = useContext(AppContext);
+  const { raceData, setraceData } = useContext(AppContext);
+  const { year } = useContext(AppContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data, error } = await supabase.from("races").select("*");
+        const { data, error } = await props.supabase
+          .from("races")
+          .select("*")
+          .eq("year", year)
+          .order("round", { ascending: true });
 
         if (error) {
           throw error;
         }
 
-        setData(data);
+        setraceData(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -24,10 +29,34 @@ const SideBar = (props) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await props.supabase
+          .from("races")
+          .select("*")
+          .eq("year", year)
+          .order("round", { ascending: true });
+
+        if (error) {
+          throw error;
+        }
+
+        setraceData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };
+
+    fetchData();
+  }, [year]);
+
   return (
     <div className="flex justify-left h-fill w-full">
       <div className="bg-whiteborder max-h-full overflow-y-auto">
-        <h1 className="text-3xl px-4 py-3 text-center text-gray-700 uppercase tracking-wider font-semibold">Races</h1>
+        <h1 className="text-3xl px-4 py-3 text-center text-gray-700 uppercase tracking-wider font-semibold">
+          Races
+        </h1>
         <div className="table-container">
           <table className="w-full">
             <thead className="sticky top-0 bg-gray-200 z-50">
@@ -44,9 +73,9 @@ const SideBar = (props) => {
               </tr>
             </thead>
             <tbody>
-              {data.map((race) => (
+              {raceData.map((race) => (
                 <tr key={race.raceId} className="border-b hover:bg-gray-100">
-                  <td className="px-4 py-2">{race.raceId}</td>
+                  <td className="px-4 py-2">{race.round}</td>
                   <td className="px-4 py-2">{race.name}</td>
                   <td className="px-4 py-2 flex gap-2">
                     <button

@@ -1,19 +1,18 @@
 import { useState, createContext } from 'react';
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
 export const AppContext = createContext(); 
  
 export const TheContext =  ({children}) => {
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [data, setData] = useState([]);
+  const [raceData, setraceData] = useState([]);
+  const [seasonData, setSeasonData] = useState([]);
+
+  const [year, setYear] = useState(2023)
 
   return (
-    <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, supabase, data, setData}}>
+    <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData}}>
       {children}
     </AppContext.Provider>
   )
