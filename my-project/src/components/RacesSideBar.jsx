@@ -52,12 +52,12 @@ const SideBar = (props) => {
   }, [year]);
 
   return (
-    <div className="flex justify-left h-fill w-full">
-      <div className="bg-whiteborder max-h-full overflow-y-auto">
+    <div className="ml-[5%] flex justify-left h-[83vh] w-[30%] max-w-[640px] border-2 bg-white shadow-md rounded-md border-black">
+      <div className="max-h-full w-full overflow-y-auto flex flex-col">
         <h1 className="text-3xl px-4 py-3 text-center text-gray-700 uppercase tracking-wider font-semibold">
           Races
         </h1>
-        <div className="table-container">
+        <div className="table-container h-fill">
           <table className="w-full">
             <thead className="sticky top-0 bg-gray-200 z-50">
               <tr>

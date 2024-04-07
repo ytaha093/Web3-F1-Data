@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AppContext } from "../context.jsx";
 import SideBar from './RacesSideBar.jsx';
 import Header from './Header.jsx';
+import Results from './Results.jsx';
 import { useState } from 'react';
 
 export const HomeView1 = (props) => {
@@ -18,10 +19,11 @@ export const HomeView1 = (props) => {
 
 
   return (
-    <>
+    <div className="flex flex-wrap">
       <Header supabase={props.supabase} />
       <SideBar supabase={props.supabase} />
-    </>
+      <Results supabase={props.supabase} />
+    </div>
   );
 }
 

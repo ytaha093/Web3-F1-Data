@@ -1,5 +1,5 @@
 .table-container {
-  max-height: calc(100vh - 150px);
+  max-height: 100%;
   overflow-y: auto;
 }
 
@@ -26,8 +26,8 @@
 
 /* Style the scrollbar track */
 .table-container {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+  /* scrollbar-width: thin;
+  scrollbar-color: transparent transparent; */
 }
 
 /* Style the scrollbar thumb */
