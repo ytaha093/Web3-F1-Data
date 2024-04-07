@@ -18,20 +18,26 @@ export const HomeView1 = () => {
 
 
   return (
-    <div className="flex w-screen h-screen flex-wrap justify-around content-around">
-      <div className="border-2 bg-white shadow-md rounded-md h-[11%] w-[97%] overflow-auto">
-        <Header />
-      </div>
-      < div className="border-2 bg-white shadow-md rounded-md h-[85%] w-[25%] overflow-auto" >
-        <SideBar />
-      </div >
-      <div className="border-2 bg-white shadow-md rounded-md h-[85%] w-[70%] overflow-auto">
+    // <div className="flex w-screen h-screen p-4 flex-wrap justify-between content-around">
+    //   <div className="border-2 bg-white shadow-md rounded-md h-[11%] w-screen">
+    //     <Header />
+    //   </div>
+    //   < div className="border-2 bg-white shadow-md rounded-md h-[85%] w-[28%]" >
+    //     <SideBar />
+    //   </div >
+    //   <div className="border-2 bg-white shadow-md rounded-md h-[85%] w-[71%]">
 
-      </div>
-    </div>
+    //   </div>
+    // </div>
     // <div>header</div>
     // <div>SideBar</div> 
     // <div>TheRest</div>
+    <>
+      <Header />
+
+      <SideBar />
+
+    </>
   );
 }
 
