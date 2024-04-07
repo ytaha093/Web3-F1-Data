@@ -18,11 +18,11 @@ const Header = (props) => {
             </div>
             <div className="w-1/5 flex justify-evenly items-center">
                 <button type="button"
-                    className="bg-stone-400 hover:bg-stone-600 text-white py-2 px-4 rounded-2xl w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 w-[50%]">
+                    className="bg-stone-400 hover:bg-stone-600 text-white py-2 px-4 rounded-2xl w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 w-[45%]">
                     Favorites
                 </button>
                 <button type="button"
-                    className="bg-stone-400 hover:bg-stone-600 text-white py-2 px-4 rounded-2xl w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 w-[44%]">
+                    className="bg-stone-400 hover:bg-stone-600 text-white py-2 px-4 rounded-2xl w-1/2 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 w-[40%]">
                     About
                 </button>
             </div>
