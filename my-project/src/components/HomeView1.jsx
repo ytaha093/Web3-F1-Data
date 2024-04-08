@@ -4,6 +4,8 @@ import { AppContext } from "../context.jsx";
 import SideBar from './RacesSideBar.jsx';
 import Header from './Header.jsx';
 import Results from './Results.jsx';
+import Standings from './Standings.jsx';
+
 import { useState } from 'react';
 
 export const HomeView1 = (props) => {
