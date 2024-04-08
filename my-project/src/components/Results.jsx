@@ -47,8 +47,6 @@ const Results = (props) => {
         if (error) {
           throw error;
         }
-
-        console.log(data);
         setRData(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -167,7 +165,7 @@ const Results = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {resultData.map((result) => (
+                  {resultData.map((result) => (
                     <tr
                       key={result.resultId}
                       className="border-b hover:bg-gray-100"
@@ -186,7 +184,7 @@ const Results = (props) => {
                       <td className="pl-1 py-2">{result.laps}</td>
                       <td className="pl-1 py-2">{result.points}</td>
                     </tr>
-                  ))} */}
+                  ))}
                 </tbody>
               </table>
             </div>
