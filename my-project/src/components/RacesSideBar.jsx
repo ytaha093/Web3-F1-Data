@@ -9,6 +9,7 @@ const SideBar = (props) => {
   const { raceData, setraceData } = useContext(AppContext);
   const { year } = useContext(AppContext);
   const { setraceID } = useContext(AppContext);
+  const { setShowResult } = useContext(AppContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,8 +33,9 @@ const SideBar = (props) => {
     fetchData();
   }, [year]);
 
+
   return (
-    <div className="ml-[5%] flex justify-left h-[83vh] min-w-[30%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4">
+    <div className="ml-[5%] flex justify-left h-[83vh] w-[30%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4">
       <div className="max-h-full w-full overflow-y-auto flex flex-col">
         <h1 className="text-3xl text-center text-gray-700 uppercase tracking-wider font-semibold mb-4">
           Races
@@ -62,6 +64,10 @@ const SideBar = (props) => {
                     <button
                       type="button"
                       className="flex items-center bg-gray-600 hover:bg-red-800 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                      onClick={() => {
+                        setShowResult(true);
+                        setraceID(race.raceId);
+                      }}
                     >
                       Results <GiCheckeredFlag className="ml-1" />
                     </button>

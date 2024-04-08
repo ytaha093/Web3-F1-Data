@@ -7,14 +7,25 @@ import Results from './Results.jsx';
 import { useState } from 'react';
 
 export const HomeView1 = (props) => {
+  const { showResult } = useContext(AppContext);
 
-  return (
-    <div className="flex flex-wrap">
-      <Header supabase={props.supabase} />
-      <SideBar supabase={props.supabase} />
-      <Results supabase={props.supabase} />
-    </div>
-  );
+  if (showResult) {
+    return (
+      <div className="flex flex-wrap">
+        <Header supabase={props.supabase} />
+        <SideBar supabase={props.supabase} />
+        <Results supabase={props.supabase} />
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="flex flex-wrap">
+        <Header supabase={props.supabase} />
+        <SideBar supabase={props.supabase} />
+      </div>
+    );
+  }
 }
 
 export default HomeView1;
