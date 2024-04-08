@@ -1,23 +1,23 @@
 import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 import { useEffect } from "react";
 
-const Results = (props) => {
+const Standings = () => {
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data, error } = await props.supabase
-                    .from("seasons")
-                    .select("*")
-                    .gte("year", 2000)
-                    .lte("year", 2023)
-                    .order("year", { ascending: true });
+                // const { data, error } = await props.supabase
+                //     .from("seasons")
+                //     .select("*")
+                //     .gte("year", 2000)
+                //     .lte("year", 2023)
+                //     .order("year", { ascending: true });
 
-                if (error) {
-                    throw error;
-                }
+                // if (error) {
+                //     throw error;
+                // }
 
-                setSeasonData(data);
+                // setSeasonData(data);
             } catch (error) {
                 console.error("Error fetching data:", error.message);
             }
@@ -32,17 +32,17 @@ const Results = (props) => {
         <div className="mr-[5%] ml-[2%] flex justify-left h-[83vh] w-[58%] border-2 bg-white shadow-md rounded-md border-black px-2">
             <div className="w-full h-full flex flex-col">
                 <h1 className="text-3xl pt-2 text-center text-gray-700 uppercase tracking-wider font-semibold mb-2">
-                    Results
+                    Standings
                 </h1>
 
                 <div className=" text-center">
-                    Race Name, Round #, Year, <span className=" underline hover:cursor-pointer">Circuit Name</span>, Date, URL
+                    After Round #
                 </div>
                 <div className="flex gap-2 h-full mt-1 overflow-hidden">
 
                     <div className="w-7/12 border-t-2 flex flex-col h-full">
                         <h1 className="text-xl pt-1 text-center text-gray-700 uppercase tracking-wider font-semibold mb-2">
-                            Qualifying
+                            Drivers
                         </h1>
                         <div className="table-container h-full">
 
@@ -56,43 +56,37 @@ const Results = (props) => {
 
                                         </th>
                                         <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-
+                                            Pts
                                         </th>
                                         <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-                                            Q1
-                                        </th>
-                                        <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-                                            Q2
-                                        </th>
-                                        <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-                                            Q3
+                                            Wins
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">22</td>
+                                        <td className="pl-1 py-2">1</td>
                                         <td className="pl-1 py-2">
                                             <span className=" underline hover:cursor-pointer">Mikal Joran</span>
                                         </td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ikeee Inc</span>
+                                            41
                                         </td>
-                                        <td className="pl-1 py-2">12:34:25</td>
-                                        <td className="pl-1 py-2">12:34:25</td>
-                                        <td className="pl-1 py-2">12:34:25</td>
+                                        <td className="pl-1 py-2">
+                                            4
+                                        </td>
                                     </tr>
                                     <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">22</td>
+                                        <td className="pl-1 py-2">2</td>
                                         <td className="pl-1 py-2">
                                             <span className=" underline hover:cursor-pointer">Mikal Joran</span>
                                         </td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ikeee Inc</span>
+                                            40
                                         </td>
-                                        <td className="pl-1 py-2">12:34:25</td>
-                                        <td className="pl-1 py-2">12:34:25</td>
-                                        <td className="pl-1 py-2">12:34:25</td>
+                                        <td className="pl-1 py-2">
+                                            2
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -104,7 +98,7 @@ const Results = (props) => {
 
                     <div className="w-7/12 border-t-2 flex flex-col h-full">
                         <h1 className="text-xl pt-1 text-center text-gray-700 uppercase tracking-wider font-semibold mb-2">
-                            Results
+                            Constructors
                         </h1>
                         <div className="table-container h-full">
 
@@ -118,60 +112,49 @@ const Results = (props) => {
 
                                         </th>
                                         <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-
-                                        </th>
-                                        <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-                                            Laps
-                                        </th>
-                                        <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
                                             Pts
+                                        </th>
+                                        <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
+                                            Wins
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">1🥇</td>
+                                    <tr key={2} className="border-b hover:bg-gray-100">
+                                        <td className="pl-1 py-2">1</td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Mikal Joran</span>
+                                            <span className=" underline hover:cursor-pointer">Red Ball</span>
                                         </td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ikeee Inc</span>
+                                            27
                                         </td>
-                                        <td className="pl-1 py-2">36</td>
-                                        <td className="pl-1 py-2">77</td>
+                                        <td className="pl-1 py-2">
+                                            5
+                                        </td>
                                     </tr>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">2🥈</td>
+                                    <tr key={3} className="border-b hover:bg-gray-100">
+                                        <td className="pl-1 py-2">2</td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Mikal Joran</span>
+                                            <span className=" underline hover:cursor-pointer">Ford</span>
                                         </td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ikeee Inc</span>
+                                            24
                                         </td>
-                                        <td className="pl-1 py-2">21</td>
-                                        <td className="pl-1 py-2">28</td>
+                                        <td className="pl-1 py-2">
+                                            2
+                                        </td>
                                     </tr>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">3🥉</td>
+                                    <tr key={4} className="border-b hover:bg-gray-100">
+                                        <td className="pl-1 py-2">3</td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Mikal Joran</span>
+                                            <span className=" underline hover:cursor-pointer">ISIS</span>
                                         </td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ikeee Inc</span>
-                                        </td>
-                                        <td className="pl-1 py-2">18</td>
-                                        <td className="pl-1 py-2">26</td>
-                                    </tr>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">4</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Mikal Joran</span>
+                                            22
                                         </td>
                                         <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ikeee Inc</span>
+                                            0
                                         </td>
-                                        <td className="pl-1 py-2">15</td>
-                                        <td className="pl-1 py-2">25</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -184,4 +167,4 @@ const Results = (props) => {
     )
 }
 
-export default Results
+export default Standings

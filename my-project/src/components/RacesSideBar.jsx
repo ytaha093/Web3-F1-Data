@@ -8,32 +8,7 @@ import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 const SideBar = (props) => {
   const { raceData, setraceData } = useContext(AppContext);
   const { year } = useContext(AppContext);
-<<<<<<< HEAD
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data, error } = await props.supabase
-          .from("races")
-          .select("*")
-          .eq("year", year)
-          .order("round", { ascending: true });
-
-        if (error) {
-          throw error;
-        }
-        console.log(data)
-        setraceData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
-    fetchData();
-  }, []);
-=======
   const { setraceID } = useContext(AppContext);
->>>>>>> 14e08fc1d4f4370f36e305f21f2970ea0a408670
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +33,7 @@ const SideBar = (props) => {
   }, [year]);
 
   return (
-    <div className="ml-[5%] flex justify-left h-[83vh] min-w-[30%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4">
+    <div className="ml-[5%] flex justify-left h-[83vh] w-[30%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4">
       <div className="max-h-full w-full overflow-y-auto flex flex-col">
         <h1 className="text-3xl text-center text-gray-700 uppercase tracking-wider font-semibold mb-4">
           Races
