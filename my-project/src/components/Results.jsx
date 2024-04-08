@@ -43,13 +43,11 @@ const Results = (props) => {
                     )
                     .eq("raceId", raceID)
                     .order("position", { ascending: true });
-
+                let sortedData = data.sort((a, b) => a.positionOrder - b.positionOrder)
                 if (error) {
                     throw error;
                 }
-
-                console.log(data);
-                setRData(data);
+                setRData(sortedData);
             } catch (error) {
                 console.error("Error fetching data:", error.message);
             }
@@ -81,15 +79,13 @@ const Results = (props) => {
         return position;
     }
 
-
     const displayQ = () => {
         if (qData.length === 0) {
             return (
                 <tr >
                     <td colSpan={6} className="text-center w-full">
-                        <div className="text-center w-full text-2xl font-semibold">❗No Qualifying Data for this Race❗</div>
+                        <div className="text-center w-full text-xl font-semibold">❗No Qualifying Data for this Race❗</div>
                     </td>
-
                 </tr>
             )
         } else {
@@ -117,6 +113,7 @@ const Results = (props) => {
                 )))
         }
     }
+
 
     return (
         <div className="mr-[5%] ml-[2%] flex justify-right h-[83vh] w-[58%] border-2 bg-white shadow-md rounded-md border-black px-2">
@@ -184,93 +181,32 @@ const Results = (props) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">1🥇</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                Mikal Joran
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                ikeee Inc
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">36</td>
-                                        <td className="pl-1 py-2">77</td>
-                                    </tr>
-                                    <tr key={2} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">2🥈</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                Mikal Joran
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                ikeee Inc
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">21</td>
-                                        <td className="pl-1 py-2">28</td>
-                                    </tr>
-                                    <tr key={3} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">3🥉</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                Mikal Joran
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                ikeee Inc
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">18</td>
-                                        <td className="pl-1 py-2">26</td>
-                                    </tr>
-                                    <tr key={4} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">4</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                Mikal Joran
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">
-                                                ikeee Inc
-                                            </span>
-                                        </td>
-                                        <td className="pl-1 py-2">15</td>
-                                        <td className="pl-1 py-2">25</td>
-                                    </tr>
+                                    {resultData.map((result) => (
+                                        <tr
+                                            key={result.resultId}
+                                            className="border-b hover:bg-gray-100"
+                                        >
+                                            <td className="pl-1 py-2">{medal(result.position)}</td>
+                                            <td className="pl-1 py-2">
+                                                <span className=" underline hover:cursor-pointer">
+                                                    {result.drivers.forename} {result.drivers.surname}
+                                                </span>
+                                            </td>
+                                            <td className="pl-1 py-2">
+                                                <span className=" underline hover:cursor-pointer">
+                                                    {result.constructors.name}
+                                                </span>
+                                            </td>
+                                            <td className="pl-1 py-2">{result.laps}</td>
+                                            <td className="pl-1 py-2">{result.points}</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* {resultData.map((result) => (
-                    <tr
-                      key={result.resultId}
-                      className="border-b hover:bg-gray-100"
-                    >
-                      <td className="pl-1 py-2">{medal(result.position)}</td>
-                      <td className="pl-1 py-2">
-                        <span className=" underline hover:cursor-pointer">
-                          {result.drivers.forename} {result.drivers.surname}
-                        </span>
-                      </td>
-                      <td className="pl-1 py-2">
-                        <span className=" underline hover:cursor-pointer">
-                          {result.constructors.name}
-                        </span>
-                      </td>
-                      <td className="pl-1 py-2">{result.laps}</td>
-                      <td className="pl-1 py-2">{result.points}</td>
-                    </tr>
-                  ))} */}
-
         </div>
     );
 };
