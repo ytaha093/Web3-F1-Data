@@ -8,16 +8,6 @@ import { useState } from 'react';
 
 export const HomeView1 = (props) => {
 
-
-  const [year, setYear] = useState(2024)
-  const [selected, setSelected] = useState("results")
-  const [race, setRace] = useState(null)
-  // Use context for favorates
-
-
-
-
-
   return (
     <div className="flex flex-wrap">
       <Header supabase={props.supabase} />

@@ -7,11 +7,14 @@ export const TheContext =  ({children}) => {
   
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [raceData, setraceData] = useState([]);
+  const [raceID, setraceID] = useState([]);
   const [seasonData, setSeasonData] = useState([]);
+  const [standingData, setStandingData] = useState([]);
+  const [qData, setQData] = useState([]);
   const [year, setYear] = useState(2000)
 
   return (
-    <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData}}>
+    <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData, standingData, setStandingData, qData, setQData, raceID, setraceID}}>
       {children}
     </AppContext.Provider>
   )

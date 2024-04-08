@@ -1,33 +1,14 @@
 import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../context.jsx";
+import { GiCheckeredFlag } from "react-icons/gi";
+import { GiRaceCar } from "react-icons/gi";
 import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 
 const SideBar = (props) => {
   const { raceData, setraceData } = useContext(AppContext);
   const { year } = useContext(AppContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data, error } = await props.supabase
-          .from("races")
-          .select("*")
-          .eq("year", year)
-          .order("round", { ascending: true });
-
-        if (error) {
-          throw error;
-        }
-
-        setraceData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { setraceID } = useContext(AppContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,12 +33,12 @@ const SideBar = (props) => {
   }, [year]);
 
   return (
-    <div className="ml-[5%] flex justify-left h-[83vh] w-[30%] max-w-[640px] border-2 bg-white shadow-md rounded-md border-black">
+    <div className="ml-[5%] flex justify-left h-[83vh] min-w-[30%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4">
       <div className="max-h-full w-full overflow-y-auto flex flex-col">
-        <h1 className="text-3xl px-4 py-3 text-center text-gray-700 uppercase tracking-wider font-semibold">
+        <h1 className="text-3xl text-center text-gray-700 uppercase tracking-wider font-semibold mb-4">
           Races
         </h1>
-        <div className="table-container h-fill">
+        <div className="table-container">
           <table className="w-full">
             <thead className="sticky top-0 bg-gray-200 z-50">
               <tr>
@@ -68,7 +49,7 @@ const SideBar = (props) => {
                   Name
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 uppercase tracking-wider font-semibold">
-                  Actions
+                  Options
                 </th>
               </tr>
             </thead>
@@ -80,15 +61,15 @@ const SideBar = (props) => {
                   <td className="px-4 py-2 flex gap-2">
                     <button
                       type="button"
-                      className="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                      className="flex items-center bg-gray-600 hover:bg-red-800 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
                     >
-                      Results
+                      Results <GiCheckeredFlag className="ml-1" />
                     </button>
                     <button
                       type="button"
-                      className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                      className="flex items-center bg-gray-600 hover:bg-indigo-800 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
                     >
-                      Standings
+                      Standings <GiRaceCar className="ml-1" />
                     </button>
                   </td>
                 </tr>
