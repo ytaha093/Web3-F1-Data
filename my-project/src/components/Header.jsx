@@ -5,9 +5,14 @@ import { AppContext } from "../context.jsx";
 const Header = (props) => {
     const { setYear } = useContext(AppContext);
     const { seasonData, setSeasonData } = useContext(AppContext);
+    const { setShowResult } = useContext(AppContext);
+    const { setShowStanding } = useContext(AppContext);
+    const { setIsLoading } = useContext(AppContext);
 
     const handleChange = (e) => {
         setYear(e.target.value);
+        setShowResult(false);
+        setShowStanding(false);
     };
 
     useEffect(() => {
@@ -18,7 +23,7 @@ const Header = (props) => {
                     .select("*")
                     .gte("year", 2000)
                     .lte("year", 2023)
-                    .order("year", { ascending: true });
+                    .order("year", { ascending: false });
 
                 if (error) {
                     throw error;

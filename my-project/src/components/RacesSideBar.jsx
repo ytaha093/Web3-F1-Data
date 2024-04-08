@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { AppContext } from "../context.jsx";
 import { GiCheckeredFlag } from "react-icons/gi";
 import { GiRaceCar } from "react-icons/gi";
-import "../SideBar.css"; // Import custom CSS file for scrollbar styling
+import "../SideBar.css";
+import LoadingSpinner from "./LoadingSpinner";
 
 const SideBar = (props) => {
   const { raceData, setraceData } = useContext(AppContext);
@@ -12,7 +13,8 @@ const SideBar = (props) => {
   const { ShowResult, setShowResult } = useContext(AppContext);
   const { showStanding, setShowStanding } = useContext(AppContext);
   const { setSelectedRace } = useContext(AppContext);
-
+  const { isLoading, setIsLoading } = useContext(AppContext);
+  
 
 
 
@@ -31,12 +33,16 @@ const SideBar = (props) => {
         setraceData(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
+      } finally {
+        setIsLoading(false); 
       }
     };
-
     fetchData();
   }, [year]);
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="ml-[5%] flex justify-left h-[83vh] w-[30%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4">

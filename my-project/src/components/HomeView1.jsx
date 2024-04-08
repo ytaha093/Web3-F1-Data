@@ -34,7 +34,6 @@ export const HomeView1 = (props) => {
       <SideBar supabase={props.supabase} />
       {displayMainCard()}
       {displayMiniCard()}
-      {/* <ContructorPopup supabase={props.supabase} /> */}
     </div>
   );
 

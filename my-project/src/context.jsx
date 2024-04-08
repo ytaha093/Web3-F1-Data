@@ -13,14 +13,17 @@ export const TheContext = ({ children }) => {
   const [conStanding, setConStanding] = useState([]);
   const [driverStanding, setDriverStanding] = useState([]);
   const [qData, setQData] = useState([]);
-  const [year, setYear] = useState(2000);
+  const [year, setYear] = useState(2023);
   const [showResult, setShowResult] = useState(false);
   const [showStanding, setShowStanding] = useState(false);
   const [showCard, setshowCard] = useState(false);
   const [resultData, setRData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [constID, setConstID] = useState([]);
+  const [constData, setConstDaTa] = useState([]);
 
   return (
-    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData, conStanding, driverStanding, setDriverStanding, setConStanding, qData, setQData, raceID, setraceID, selectedRace, setSelectedRace, showResult, setShowResult, showCard, setshowCard, resultData, setRData, showStanding, setShowStanding }}>
+    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData, conStanding, driverStanding, setDriverStanding, setConStanding, qData, setQData, raceID, setraceID, selectedRace, setSelectedRace, showResult, setShowResult, showCard, setshowCard, resultData, setRData, showStanding, setShowStanding,isLoading, setIsLoading, constID, setConstID, constData, setConstDaTa }}>
       {children}
     </AppContext.Provider>
   )
