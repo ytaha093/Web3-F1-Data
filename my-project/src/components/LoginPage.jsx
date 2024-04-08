@@ -2,7 +2,7 @@ import {useContext} from "react";
 import { AppContext } from "../context.jsx";
 
 const Login = function (props) {
-  const {isLoggedIn, setIsLoggedIn } = useContext(AppContext)
+  const {setIsLoggedIn } = useContext(AppContext)
 
 
   return (
@@ -14,7 +14,7 @@ const Login = function (props) {
         URL = https://www.iconfinder.com/social-media-icons
     */
     
-    <div className="bg-center w-screen h-screen bg-cover bg-[url('/f1-2.jpg')]">
+    <div className="bg-center w-screen h-screen bg-cover bg-[url('/f1-2.jpg')] overflow-hidden">
       <div className="flex justify-start min-h-screen">
         <div className="bg-white shadow-lg rounded-lg p-40 border-4 border-black">
           <h2 className="text-4xl font-bold mb-16">Login to Your Account</h2>

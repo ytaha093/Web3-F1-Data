@@ -5,7 +5,6 @@ import SideBar from './RacesSideBar.jsx';
 import Header from './Header.jsx';
 import Results from './Results.jsx';
 import Standings from './Standings.jsx';
-import { useState } from 'react';
 import DriverPopup from './popups/DriverPopup.jsx';
 import ContructorPopup from './popups/ContructorPopup.jsx';
 import CircuitPopup from './popups/CircuitPopup.jsx';
@@ -35,7 +34,7 @@ export const HomeView1 = (props) => {
       <SideBar supabase={props.supabase} />
       {displayMainCard()}
       {displayMiniCard()}
-      <ContructorPopup supabase={props.supabase} />
+      {/* <ContructorPopup supabase={props.supabase} /> */}
     </div>
   );
 

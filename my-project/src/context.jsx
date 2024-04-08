@@ -5,7 +5,7 @@ export const AppContext = createContext();
 export const TheContext = ({ children }) => {
 
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [raceData, setraceData] = useState([]);
   const [selectedRace, setSelectedRace] = useState([]);
   const [raceID, setraceID] = useState([]);

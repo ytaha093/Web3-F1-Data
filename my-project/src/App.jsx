@@ -6,7 +6,7 @@ import SideBar from "./components/RacesSideBar.jsx";
 import HomeView1 from "./components/HomeView1.jsx";
 
 function App(props) {
-  const { isLoggedIn, setIsLoggedIn } = useContext(AppContext)
+  const { isLoggedIn } = useContext(AppContext)
 
 
   if (isLoggedIn) {
@@ -17,7 +17,7 @@ function App(props) {
   else {
     return (
       <>
-        <Login supabase={supabase} />
+        <Login supabase={props.supabase} />
       </>
     );
   }
