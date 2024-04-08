@@ -21,7 +21,6 @@ const Dashboard = () => {
 
                 </div>
                 <div className="w-[73%] h-[89%] border-l-2 border-black">
-
                 </div>
             </div>
         </div>
