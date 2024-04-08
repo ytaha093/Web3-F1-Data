@@ -9,21 +9,25 @@ const SideBar = (props) => {
   const { raceData, setraceData } = useContext(AppContext);
   const { year } = useContext(AppContext);
   const { setraceID } = useContext(AppContext);
-  const { setShowResult } = useContext(AppContext);
+  const { ShowResult, setShowResult } = useContext(AppContext);
+  const { showStanding, setShowStanding } = useContext(AppContext);
+  const { setSelectedRace } = useContext(AppContext);
+
+
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data, error } = await props.supabase
           .from("races")
-          .select("*")
+          .select("*, circuits(*)")
           .eq("year", year)
           .order("round", { ascending: true });
 
         if (error) {
           throw error;
         }
-
         setraceData(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -65,16 +69,26 @@ const SideBar = (props) => {
                       type="button"
                       className="flex items-center bg-gray-600 hover:bg-red-800 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
                       onClick={() => {
-                        setShowResult(true);
+                        if (ShowResult !== true) {
+                          setShowResult(true);
+                          setShowStanding(false);
+                        }
                         setraceID(race.raceId);
-                      }}
-                    >
+                        setSelectedRace(raceData.find(e => e.raceId == race.raceId))
+                      }}>
                       Results <GiCheckeredFlag className="ml-1" />
                     </button>
                     <button
                       type="button"
                       className="flex items-center bg-gray-600 hover:bg-indigo-800 text-white py-2 px-4 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
-                    >
+                      onClick={() => {
+                        if (showStanding !== true) {
+                          setShowResult(false);
+                          setShowStanding(true);
+                        }
+                        setraceID(race.raceId);
+                        setSelectedRace(raceData.find(e => e.raceId == race.raceId))
+                      }}>
                       Standings <GiRaceCar className="ml-1" />
                     </button>
                   </td>

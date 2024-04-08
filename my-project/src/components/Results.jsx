@@ -4,10 +4,10 @@ import { useContext } from "react";
 import { AppContext } from "../context.jsx";
 
 const Results = (props) => {
-    const { standingData, setStandingData } = useContext(AppContext);
     const { qData, setQData } = useContext(AppContext);
     const { raceID } = useContext(AppContext);
     const { resultData, setRData } = useContext(AppContext);
+    const { selectedRace } = useContext(AppContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,10 +44,10 @@ const Results = (props) => {
                     .eq("raceId", raceID)
                     .order("position", { ascending: true });
                 let sortedData = data.sort((a, b) => a.positionOrder - b.positionOrder)
+                setRData(sortedData);
                 if (error) {
                     throw error;
                 }
-                setRData(sortedData);
             } catch (error) {
                 console.error("Error fetching data:", error.message);
             }
@@ -57,6 +57,14 @@ const Results = (props) => {
 
     function handleNull(value) {
         if (value == null || value.length === 0) {
+            return "NA";
+        } else {
+            return value;
+        }
+    }
+
+    function handleNullResults(value) {
+        if (value == null || value.length === 0) {
             return "DNF";
         } else {
             return value;
@@ -65,18 +73,18 @@ const Results = (props) => {
 
     function medal(position) {
         switch (position) {
-            case 1:
+            case "1":
                 position = position + "🥇";
                 break;
-            case 2:
+            case "2":
                 position = position + "🥈";
                 break;
-            case 3:
+            case "3":
                 position = position + "🥉";
                 break;
         }
 
-        return position;
+        return handleNullResults(position);
     }
 
     const displayQ = () => {
@@ -95,14 +103,14 @@ const Results = (props) => {
                         key={q.qualifyId}
                         className="border-b hover:bg-gray-100"
                     >
-                        <td className="pl-1 py-2">{q.position}</td>
+                        <td className="pl-1 py-2 ">{q.position}</td>
                         <td className="pl-1 py-2">
-                            <span className=" underline hover:cursor-pointer">
+                            <span className="underline hover:cursor-pointer hover:text-stone-500">
                                 {q.drivers.forename} {q.drivers.surname}
                             </span>
                         </td>
                         <td className="pl-1 py-2">
-                            <span className=" underline hover:cursor-pointer">
+                            <span className=" underline hover:cursor-pointer hover:text-stone-500">
                                 {q.constructors.name}
                             </span>
                         </td>
@@ -116,16 +124,16 @@ const Results = (props) => {
 
 
     return (
-        <div className="mr-[5%] ml-[2%] flex justify-right h-[83vh] w-[58%] border-2 bg-white shadow-md rounded-md border-black px-2">
+        <div className="mr-[5%] ml-[2%] flex justify-right h-[83vh] w-[58%] border-2 bg-white shadow-xl rounded-md border-gray-200  px-2">
             <div className="w-full h-full flex flex-col">
                 <h1 className="text-3xl pt-2 text-center text-gray-700 uppercase tracking-wider font-semibold mb-2">
-                    Races
+                    Results
                 </h1>
 
                 <div className=" text-center">
-                    Race Name, Round #, Year,{" "}
-                    <span className=" underline hover:cursor-pointer">Circuit Name</span>,
-                    Date, URL
+                    {selectedRace.name}, Round {selectedRace.round}, {selectedRace.date},{" "}
+                    <span className=" underline hover:cursor-pointer hover:text-stone-500">{selectedRace.circuits.name}</span>,{" "}
+                    <a href={selectedRace.url} target="_blank" className=" underline text-cyan-400 hover:text-cyan-600">Wiki</a>
                 </div>
                 <div className="flex gap-2 h-full mt-1 overflow-hidden">
                     <div className="w-7/12 border-t-2 flex flex-col h-full">
@@ -184,16 +192,15 @@ const Results = (props) => {
                                     {resultData.map((result) => (
                                         <tr
                                             key={result.resultId}
-                                            className="border-b hover:bg-gray-100"
-                                        >
+                                            className="border-b hover:bg-gray-100">
                                             <td className="pl-1 py-2">{medal(result.position)}</td>
                                             <td className="pl-1 py-2">
-                                                <span className=" underline hover:cursor-pointer">
+                                                <span className=" underline hover:cursor-pointer hover:text-stone-500">
                                                     {result.drivers.forename} {result.drivers.surname}
                                                 </span>
                                             </td>
                                             <td className="pl-1 py-2">
-                                                <span className=" underline hover:cursor-pointer">
+                                                <span className=" underline hover:cursor-pointer hover:text-stone-500">
                                                     {result.constructors.name}
                                                 </span>
                                             </td>

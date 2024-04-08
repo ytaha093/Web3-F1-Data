@@ -35,7 +35,7 @@ const Header = (props) => {
 
     return (
         <div className="h-[16vh] w-screen flex justify-center items-center">
-            <div className="border-2 bg-white shadow-md rounded-md px-2 border-black w-[90%] h-[80%] flex justify-between items-center text-xl">
+            <div className="border-2 bg-white shadow-xl rounded-md border-gray-200 px-2 w-[90%] h-[80%] flex justify-between items-center text-xl">
                 <div className="w-1/5 pl-6">
                     <label htmlFor="year">Season: </label>
                     <select
@@ -52,13 +52,13 @@ const Header = (props) => {
                 <div className="w-1/5 flex justify-center items-center gap-6">
                     <button
                         type="button"
-                        className="bg-green-500 hover:bg-green-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                        className="bg-gray-600 hover:bg-yellow-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
                     >
                         Favorites
                     </button>
                     <button
                         type="button"
-                        className="bg-green-500 hover:bg-green-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                        className=" bg-gray-600 hover:bg-blue-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
                     >
                         About
                     </button>

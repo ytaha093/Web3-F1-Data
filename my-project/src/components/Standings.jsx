@@ -1,30 +1,55 @@
+import { AppContext } from "../context.jsx";
+
 import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 import { useEffect } from "react";
+import { useContext } from "react";
 
-const Standings = () => {
+const Standings = (props) => {
+    const { raceID } = useContext(AppContext);
+    const { selectedRace } = useContext(AppContext);
+    const { conStanding, setConStanding } = useContext(AppContext);
+    const { driverStanding, setDriverStanding } = useContext(AppContext);
+
+
+
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const { data, error } = await props.supabase
-                //     .from("seasons")
-                //     .select("*")
-                //     .gte("year", 2000)
-                //     .lte("year", 2023)
-                //     .order("year", { ascending: true });
+                const { data, error } = await props.supabase
+                    .from("constructor_standings")
+                    .select("points, position, wins, constructors(*)")
+                    .eq("raceId", raceID)
+                    .order("position", { ascending: true });
 
-                // if (error) {
-                //     throw error;
-                // }
-
-                // setSeasonData(data);
+                let sortedData = data.sort((a, b) => a.position - b.position)
+                setConStanding(sortedData)
             } catch (error) {
                 console.error("Error fetching data:", error.message);
             }
         };
 
         fetchData();
-    }, []);
+    }, [raceID]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { data, error } = await props.supabase
+                    .from("driver_standings")
+                    .select(" points, position, wins ,drivers(*)")
+                    .eq("raceId", raceID)
+                    .order("position", { ascending: true });
+                console.log(data);
+                setDriverStanding(data)
+            } catch (error) {
+                console.error("Error fetching data:", error.message);
+            }
+        };
+
+        fetchData();
+    }, [raceID]);
 
 
 
@@ -36,7 +61,7 @@ const Standings = () => {
                 </h1>
 
                 <div className=" text-center">
-                    After Round #
+                    After Round {selectedRace.round}
                 </div>
                 <div className="flex gap-2 h-full mt-1 overflow-hidden">
 
@@ -64,30 +89,20 @@ const Standings = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">1</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Mikal Joran</span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            41
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            4
-                                        </td>
-                                    </tr>
-                                    <tr key={1} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">2</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Mikal Joran</span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            40
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            2
-                                        </td>
-                                    </tr>
+                                    {driverStanding.map((result, index) => (
+                                        <tr key={index} className="border-b hover:bg-gray-100">
+                                            <td className="pl-1 py-2">{result.position}</td>
+                                            <td className="pl-1 py-2">
+                                                <span className=" underline hover:cursor-pointer hover:text-stone-500">{result.drivers.forename + " " + result.drivers.surname}</span>
+                                            </td>
+                                            <td className="pl-1 py-2">
+                                                {result.points}
+                                            </td>
+                                            <td className="pl-1 py-2">
+                                                {result.wins}
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
@@ -120,47 +135,24 @@ const Standings = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr key={2} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">1</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Red Ball</span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            27
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            5
-                                        </td>
-                                    </tr>
-                                    <tr key={3} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">2</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">Ford</span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            24
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            2
-                                        </td>
-                                    </tr>
-                                    <tr key={4} className="border-b hover:bg-gray-100">
-                                        <td className="pl-1 py-2">3</td>
-                                        <td className="pl-1 py-2">
-                                            <span className=" underline hover:cursor-pointer">ISIS</span>
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            22
-                                        </td>
-                                        <td className="pl-1 py-2">
-                                            0
-                                        </td>
-                                    </tr>
+                                    {conStanding.map((result, index) => (
+                                        <tr key={index} className="border-b hover:bg-gray-100">
+                                            <td className="pl-1 py-2">{result.position}</td>
+                                            <td className="pl-1 py-2">
+                                                <span className=" underline hover:cursor-pointer hover:text-stone-500">{result.constructors.name}</span>
+                                            </td>
+                                            <td className="pl-1 py-2">
+                                                {result.points}
+                                            </td>
+                                            <td className="pl-1 py-2">
+                                                {result.wins}
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

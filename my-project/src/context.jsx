@@ -1,24 +1,28 @@
 import { useState, createContext } from 'react';
 
-export const AppContext = createContext(); 
- 
-export const TheContext =  ({children}) => {
+export const AppContext = createContext();
 
-  
+export const TheContext = ({ children }) => {
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [raceData, setraceData] = useState([]);
+  const [selectedRace, setSelectedRace] = useState([]);
   const [raceID, setraceID] = useState([]);
   const [seasonData, setSeasonData] = useState([]);
-  const [standingData, setStandingData] = useState([]);
+  const [conStanding, setConStanding] = useState([]);
+  const [driverStanding, setDriverStanding] = useState([]);
   const [qData, setQData] = useState([]);
   const [year, setYear] = useState(2000);
   const [showResult, setShowResult] = useState(false);
-  const [resultData, setRData]= useState([]);
+  const [showStanding, setShowStanding] = useState(false);
+  const [showCard, setshowCard] = useState(false);
+  const [resultData, setRData] = useState([]);
 
   return (
-    <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData, standingData, setStandingData, qData, setQData, raceID, setraceID, showResult, setShowResult, resultData, setRData}}>
+    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, raceData, setraceData, year, setYear, seasonData, setSeasonData, conStanding, driverStanding, setDriverStanding, setConStanding, qData, setQData, raceID, setraceID, selectedRace, setSelectedRace, showResult, setShowResult, showCard, setshowCard, resultData, setRData, showStanding, setShowStanding }}>
       {children}
     </AppContext.Provider>
   )
-  
+
 }
