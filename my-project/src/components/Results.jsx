@@ -44,6 +44,43 @@ const Results = (props) => {
     const handleEmpty = () => {
 
     }
+
+    const displayQ = () => {
+        if (qData.length === 0) {
+            return (
+                <tr >
+                    <td colSpan={6} className="text-center w-full">
+                        <div className="text-center w-full text-2xl font-semibold">❗No Qualifying Data for this Race❗</div>
+                    </td>
+
+                </tr>
+            )
+        } else {
+            return (
+                qData.map((q) => (
+                    < tr
+                        key={q.qualifyId}
+                        className="border-b hover:bg-gray-100"
+                    >
+                        <td className="pl-1 py-2">{q.position}</td>
+                        <td className="pl-1 py-2">
+                            <span className=" underline hover:cursor-pointer">
+                                {q.drivers.forename} {q.drivers.surname}
+                            </span>
+                        </td>
+                        <td className="pl-1 py-2">
+                            <span className=" underline hover:cursor-pointer">
+                                {q.constructors.name}
+                            </span>
+                        </td>
+                        <td className="pl-1 py-2">{handleNull(q.q1)}</td>
+                        <td className="pl-1 py-2">{handleNull(q.q2)}</td>
+                        <td className="pl-1 py-2">{handleNull(q.q3)}</td>
+                    </tr >
+                )))
+        }
+    }
+
     return (
         <div className="mr-[5%] ml-[2%] flex justify-right h-[83vh] w-[58%] border-2 bg-white shadow-md rounded-md border-black px-2">
             <div className="w-full h-full flex flex-col">
@@ -82,27 +119,7 @@ const Results = (props) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {qData.map((q) => (
-                                        <tr
-                                            key={q.qualifyId}
-                                            className="border-b hover:bg-gray-100"
-                                        >
-                                            <td className="pl-1 py-2">{q.position}</td>
-                                            <td className="pl-1 py-2">
-                                                <span className=" underline hover:cursor-pointer">
-                                                    {q.drivers.forename} {q.drivers.surname}
-                                                </span>
-                                            </td>
-                                            <td className="pl-1 py-2">
-                                                <span className=" underline hover:cursor-pointer">
-                                                    {q.constructors.name}
-                                                </span>
-                                            </td>
-                                            <td className="pl-1 py-2">{handleNull(q.q1)}</td>
-                                            <td className="pl-1 py-2">{handleNull(q.q2)}</td>
-                                            <td className="pl-1 py-2">{handleNull(q.q3)}</td>
-                                        </tr>
-                                    ))}
+                                    {displayQ()}
                                 </tbody>
                             </table>
                         </div>
