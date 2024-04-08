@@ -46,7 +46,7 @@ const SideBar = (props) => {
         </h1>
         <div className="table-container">
           <table className="w-full">
-            <thead className="sticky top-0 bg-gray-200 z-50">
+            <thead className="sticky top-0 bg-gray-200 z-10">
               <tr>
                 <th className="px-4 py-3 text-left text-gray-700 uppercase tracking-wider font-semibold">
                   Round
