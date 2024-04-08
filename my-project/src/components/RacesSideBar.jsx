@@ -19,7 +19,7 @@ const SideBar = (props) => {
         if (error) {
           throw error;
         }
-
+        console.log(data)
         setraceData(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
