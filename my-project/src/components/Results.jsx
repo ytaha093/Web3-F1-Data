@@ -7,7 +7,7 @@ const Results = (props) => {
     const { standingData, setStandingData } = useContext(AppContext);
     const { qData, setQData } = useContext(AppContext);
     const { raceID } = useContext(AppContext);
-    //const {driver, setDriver} = useContext(AppContext);
+    const { resultData, setRData } = useContext(AppContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,6 +33,30 @@ const Results = (props) => {
         fetchData();
     }, [raceID]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const { data, error } = await props.supabase
+                    .from("results")
+                    .select(
+                        " *, drivers (*), races (*), constructors (*)"
+                    )
+                    .eq("raceId", raceID)
+                    .order("position", { ascending: true });
+
+                if (error) {
+                    throw error;
+                }
+
+                console.log(data);
+                setRData(data);
+            } catch (error) {
+                console.error("Error fetching data:", error.message);
+            }
+        };
+        fetchData();
+    }, [raceID]);
+
     function handleNull(value) {
         if (value == null || value.length === 0) {
             return "DNF";
@@ -41,9 +65,22 @@ const Results = (props) => {
         }
     }
 
-    const handleEmpty = () => {
+    function medal(position) {
+        switch (position) {
+            case 1:
+                position = position + "🥇";
+                break;
+            case 2:
+                position = position + "🥈";
+                break;
+            case 3:
+                position = position + "🥉";
+                break;
+        }
 
+        return position;
     }
+
 
     const displayQ = () => {
         if (qData.length === 0) {
@@ -213,6 +250,27 @@ const Results = (props) => {
                     </div>
                 </div>
             </div>
+            {/* {resultData.map((result) => (
+                    <tr
+                      key={result.resultId}
+                      className="border-b hover:bg-gray-100"
+                    >
+                      <td className="pl-1 py-2">{medal(result.position)}</td>
+                      <td className="pl-1 py-2">
+                        <span className=" underline hover:cursor-pointer">
+                          {result.drivers.forename} {result.drivers.surname}
+                        </span>
+                      </td>
+                      <td className="pl-1 py-2">
+                        <span className=" underline hover:cursor-pointer">
+                          {result.constructors.name}
+                        </span>
+                      </td>
+                      <td className="pl-1 py-2">{result.laps}</td>
+                      <td className="pl-1 py-2">{result.points}</td>
+                    </tr>
+                  ))} */}
+
         </div>
     );
 };
