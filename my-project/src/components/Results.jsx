@@ -40,10 +40,7 @@ const Results = (props) => {
       return value;
     }
   }
-
-  const handleEmpty = () => {
-      
-  }   
+  
   return (
     <div className="mr-[5%] ml-[2%] flex justify-right h-[83vh] w-[58%] border-2 bg-white shadow-md rounded-md border-black px-2">
       <div className="w-full h-full flex flex-col">
