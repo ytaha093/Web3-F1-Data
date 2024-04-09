@@ -21,7 +21,6 @@ const Results = (props) => {
           )
           .eq("raceId", raceID)
           .order("position", { ascending: true });
-        console.log(data)
         if (error) {
           throw error;
         }
@@ -103,11 +102,13 @@ const Results = (props) => {
         <tr key={q.qualifyId} className="border-b hover:bg-gray-100">
           <td className="pl-1 py-2 ">{q.position}</td>
           <td className="pl-1 py-2">
-            <span className="underline hover:cursor-pointer hover:text-stone-500"
+            <span
+              className="underline hover:cursor-pointer hover:text-stone-500"
               onClick={() => {
                 setshowCard("driver");
-                setDriverID(result.drivers.driverId);
-              }}>
+                setDriverID(q.drivers.driverId);
+              }}
+            >
               {q.drivers.forename} {q.drivers.surname}
             </span>
           </td>
@@ -117,7 +118,8 @@ const Results = (props) => {
               onClick={() => {
                 setshowCard("contructor");
                 setConstID(q.constructors.constructorId);
-              }}>
+              }}
+            >
               {q.constructors.name}
             </span>
           </td>
@@ -138,7 +140,12 @@ const Results = (props) => {
 
         <div className=" text-center">
           {selectedRace.name}, Round {selectedRace.round}, {selectedRace.date},{" "}
-          <span className=" underline hover:cursor-pointer hover:text-stone-500">
+          <span
+            className=" underline hover:cursor-pointer hover:text-stone-500"
+            onClick={() => {
+              setshowCard("circuit");
+            }}
+          >
             {selectedRace.circuits.name}
           </span>
           ,{" "}
@@ -209,14 +216,14 @@ const Results = (props) => {
                     >
                       <td className="pl-1 py-2">{medal(result.position)}</td>
                       <td className="pl-1 py-2">
-                        <span className=" underline hover:cursor-pointer hover:text-stone-500"
+                        <span
+                          className=" underline hover:cursor-pointer hover:text-stone-500"
                           onClick={() => {
                             setshowCard("driver");
                             setDriverID(result.drivers.driverId);
-                          }}>
-
+                          }}
+                        >
                           {result.drivers.forename} {result.drivers.surname}
-
                         </span>
                       </td>
                       <td className="pl-1 py-2">
@@ -225,7 +232,8 @@ const Results = (props) => {
                           onClick={() => {
                             setshowCard("contructor");
                             setConstID(result.constructors.constructorId);
-                          }}>
+                          }}
+                        >
                           {result.constructors.name}
                         </span>
                       </td>

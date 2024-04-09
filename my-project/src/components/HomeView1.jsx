@@ -9,6 +9,7 @@ import DriverPopup from './popups/DriverPopup.jsx';
 import ContructorPopup from './popups/ContructorPopup.jsx';
 import CircuitPopup from './popups/CircuitPopup.jsx';
 import FavoritePopup from './popups/Favoratepopup.jsx';
+import AboutPopup from './popups/AboutPopup.jsx';
 
 export const HomeView1 = (props) => {
   const { showResult, showStanding, showCard } = useContext(AppContext);
@@ -25,6 +26,7 @@ export const HomeView1 = (props) => {
     if (showCard == "circuit") return <CircuitPopup supabase={props.supabase} />
     if (showCard == "driver") return <DriverPopup supabase={props.supabase} />
     if (showCard == "contructor") return <ContructorPopup supabase={props.supabase} />
+    if (showCard == "about") return <AboutPopup />
   }
 
 
