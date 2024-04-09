@@ -4,6 +4,13 @@ import "../SideBar.css"; // Import custom CSS file for scrollbar styling
 import { useEffect } from "react";
 import { useContext } from "react";
 
+
+
+/**
+ * A sidebar that displays all the races withen a selected year, includes results and standings buttons.
+ * 
+ * @returns Sidebar component, displays on left side of view.
+ */
 const Standings = (props) => {
   const { raceID } = useContext(AppContext);
   const { selectedRace } = useContext(AppContext);

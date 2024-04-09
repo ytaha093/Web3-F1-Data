@@ -2,6 +2,13 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../context.jsx";
 
+
+
+/**
+ * The header component, contains a year selector, header text, favorate button, and about button.
+ * 
+ * @returns Header component, displays at top of view
+ */
 const Header = (props) => {
     const { setYear } = useContext(AppContext);
     const { seasonData, setSeasonData } = useContext(AppContext);
@@ -11,13 +18,14 @@ const Header = (props) => {
     const { setshowCard } = useContext(AppContext);
     const { favoriteData } = useContext(AppContext);
 
-
+    // change state and close other views when changing year
     const handleChange = (e) => {
         setYear(e.target.value);
         setShowResult(false);
         setShowStanding(false);
     };
 
+    // get all the year
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -65,7 +73,6 @@ const Header = (props) => {
 
 
                         onClick={() => {
-                            console.log(favoriteData)
                             if (Object.keys(favoriteData).length != 0) {
                                 setshowCard("favorite");
                             }

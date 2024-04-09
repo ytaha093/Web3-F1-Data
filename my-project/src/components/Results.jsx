@@ -3,6 +3,13 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../context.jsx";
 
+
+
+/**
+ * A results card that displays general race info about the race, qualifing information, and results info.
+ * 
+ * @returns a results component displays in middle right side of page
+ */
 const Results = (props) => {
   const { qData, setQData } = useContext(AppContext);
   const { raceID } = useContext(AppContext);
