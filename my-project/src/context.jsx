@@ -24,10 +24,12 @@ export const TheContext = ({ children }) => {
   const [circuitID, setcircuitID] = useState([]);
   const [constData, setConstDaTa] = useState([]);
   const [driverData, setDriverDaTa] = useState([]);
+  const [favoriteData, setFavoriteData] = useState({});
+
 
 
   return (
-    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, raceData,driverID, driverData, setDriverDaTa , setDriverID, setraceData,circuitID, setcircuitID, year, setYear, seasonData, setSeasonData, conStanding, driverStanding, setDriverStanding, setConStanding, qData, setQData, raceID, setraceID, selectedRace, setSelectedRace, showResult, setShowResult, showCard, setshowCard, resultData, setRData, showStanding, setShowStanding,isLoading, setIsLoading, constID, setConstID, constData, setConstDaTa }}>
+    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, raceData, favoriteData, setFavoriteData, driverID, driverData, setDriverDaTa, setDriverID, setraceData, circuitID, setcircuitID, year, setYear, seasonData, setSeasonData, conStanding, driverStanding, setDriverStanding, setConStanding, qData, setQData, raceID, setraceID, selectedRace, setSelectedRace, showResult, setShowResult, showCard, setshowCard, resultData, setRData, showStanding, setShowStanding, isLoading, setIsLoading, constID, setConstID, constData, setConstDaTa }}>
       {children}
     </AppContext.Provider>
   )

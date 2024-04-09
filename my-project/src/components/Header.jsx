@@ -8,6 +8,8 @@ const Header = (props) => {
     const { setShowResult } = useContext(AppContext);
     const { setShowStanding } = useContext(AppContext);
     const { setIsLoading } = useContext(AppContext);
+    const { setshowCard } = useContext(AppContext);
+
 
     const handleChange = (e) => {
         setYear(e.target.value);
@@ -58,7 +60,9 @@ const Header = (props) => {
                     <button
                         type="button"
                         className="bg-gray-600 hover:bg-yellow-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
-                    >
+                        onClick={() => {
+                            setshowCard("favorite");
+                        }}>
                         Favorites
                     </button>
                     <button
