@@ -50,7 +50,7 @@ const Standings = (props) => {
   }, [raceID]);
 
   return (
-    <div className="mr-[5%] ml-[2%] flex justify-left h-[83vh] w-[58%] border-2 bg-white shadow-md rounded-md border-black px-2">
+    <div className="mr-[5%] ml-[2%] flex justify-left h-[83vh] w-[58%] border-2 bg-white shadow-xl rounded-md border-gray-200 px-2">
       <div className="w-full h-full flex flex-col">
         <h1 className="text-3xl pt-2 text-center text-gray-700 uppercase tracking-wider font-semibold mb-2">
           Standings

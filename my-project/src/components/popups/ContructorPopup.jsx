@@ -15,12 +15,12 @@ const ConstructorPopup = (props) => {
           .from("constructors")
           .select("*")
           .eq("constructorId", constID);
-
+          console.log(data)
         if (error) {
           throw error;
         }
 
-        setConstDaTa(data);
+        setConstDaTa(data[0]);
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
@@ -30,7 +30,7 @@ const ConstructorPopup = (props) => {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg">
-      <div className="h-[50vh] w-[20%] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4 relative">
+      <div className="max-h-[75vh] max-w-[45%] min-w-[500px] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4 relative">
         <div className="mb-4 flex justify-between">
           <span className="text-3xl font-bold">Constructor Details</span>
           <button
@@ -45,31 +45,26 @@ const ConstructorPopup = (props) => {
         </div>
         <table className="w-full">
           <tbody>
-            {constData.map((cons) => (
-                <tr key={cons.constructorId + 1}>
+                <tr key={1}>
                 <td className="text-lg font-semibold">Name:</td>
-                <td className="text-lg">{cons.name}</td>
+                <td className="text-lg">{constData.name}</td>
               </tr>
-            ))}
-            {constData.map((cons) => (
-              <tr key={cons.constructorId + 2}>
+              <tr key={2}>
                 <td className="text-lg font-semibold">Nationality:</td>
-                <td className="text-lg">{cons.nationality}</td>
+                <td className="text-lg">{constData.nationality}</td>
               </tr>
-            ))}
-            {constData.map((cons) => (
-              <tr key={cons.constructorId + 3}>
+              <tr key={3}>
                 <td className="text-lg font-semibold">URL:</td>
                 <td className="text-lg">
                   <a
-                    href={cons.url}
+                    href={constData.url}
                     className="text-blue-600 hover:underline"
                   >
                     Link
                   </a>
                 </td>
               </tr>
-            ))}
+
 
             <tr>
               <td colSpan="2" className="text-center py-4">

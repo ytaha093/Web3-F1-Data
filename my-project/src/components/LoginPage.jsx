@@ -15,8 +15,9 @@ const Login = function (props) {
     */
     
     <div className="bg-center w-screen h-screen bg-cover bg-[url('/f1-2.jpg')] overflow-hidden">
-      <div className="flex justify-start min-h-screen">
-        <div className="bg-white shadow-lg rounded-lg p-40 border-4 border-black">
+      <div className="flex justify-start min-h-screen items-center">
+        <div className="bg-white shadow-lg w-[52%] border-4 rounded-lg     border-black h-screen flex justify-center items-center">
+        <div className="px-40">
           <h2 className="text-4xl font-bold mb-16">Login to Your Account</h2>
           <form className="text-left">
             <div className="mb-10">
@@ -49,6 +50,7 @@ const Login = function (props) {
               </div>
             </div>
         </div>
+      </div>
       </div>
     </div>
   );
