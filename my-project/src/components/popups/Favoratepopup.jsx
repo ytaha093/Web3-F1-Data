@@ -4,6 +4,12 @@ import { AppContext } from "../../context.jsx";
 import "../../SideBar.css";
 
 
+
+/**
+ * A favorite card that displays all the users favorates, possitioned ontop the page in the middle and blurs background.
+ * 
+ * @returns a forground card that displays favorate info
+ */
 const FavoritePopup = (props) => {
     const { favoriteData, setFavoriteData } = useContext(AppContext);
     const { setshowCard } = useContext(AppContext);

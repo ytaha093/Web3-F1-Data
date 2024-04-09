@@ -4,6 +4,13 @@ import { AppContext } from "../../context.jsx";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+
+
+/**
+ * A Driver card that displays the selected circuit info, possitioned ontop the page in the middle and blurs background.
+ * 
+ * @returns a forground card that displays circuit info
+ */
 const CircuitPopup = (props) => {
     const { selectedRace } = useContext(AppContext);
     const { setshowCard } = useContext(AppContext);
