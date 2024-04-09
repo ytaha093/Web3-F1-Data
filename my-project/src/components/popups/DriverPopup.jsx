@@ -2,13 +2,20 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../context.jsx";
 
+
+
+/**
+ * A Driver card that displays the selected drivers info, possitioned ontop the page in the middle and blurs background.
+ * 
+ * @returns a forground card that displays driver info
+ */
 const DriverPopup = (props) => {
     const { driverID, setDriverID } = useContext(AppContext);
     const { driverData, setDriverDaTa } = useContext(AppContext);
     const { setshowCard } = useContext(AppContext);
     const { favoriteData, setFavoriteData } = useContext(AppContext);
 
-
+    // get driver info and save to context
     useEffect(() => {
         const fetchData = async () => {
             try {
