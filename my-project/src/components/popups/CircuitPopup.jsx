@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../context.jsx";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 
 
@@ -16,6 +16,7 @@ const CircuitPopup = (props) => {
     const { setshowCard } = useContext(AppContext);
     const position = [selectedRace.circuits.lng, selectedRace.circuits.lat];
     const { favoriteData, setFavoriteData } = useContext(AppContext);
+
 
 
     return (
@@ -78,15 +79,15 @@ const CircuitPopup = (props) => {
                                 </button>
                             </td>
                         </tr>
-                        <tr>
-                            <td colSpan="2" className="text-center">
-                                <div className="min-h-60 bg-gray-300 rounded-lg mt-8 flex justify-center items-center">
-                                    <span className="text-lg font-semibold"> Image</span>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+                <MapContainer className="h-[26vh]" center={[selectedRace.circuits.lat, selectedRace.circuits.lng]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[selectedRace.circuits.lat, selectedRace.circuits.lng]}>
+                    </Marker>
+                </MapContainer>
             </div>
         </div>
     );
