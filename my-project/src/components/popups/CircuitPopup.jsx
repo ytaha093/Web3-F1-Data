@@ -81,7 +81,7 @@ const CircuitPopup = (props) => {
                         </tr>
                     </tbody>
                 </table>
-                <MapContainer className="h-[26vh]" center={[selectedRace.circuits.lat, selectedRace.circuits.lng]} zoom={13} scrollWheelZoom={false}>
+                <MapContainer className="h-[26vh]" center={[selectedRace.circuits.lat, selectedRace.circuits.lng]} zoom={13} scrollWheelZoom={true}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />

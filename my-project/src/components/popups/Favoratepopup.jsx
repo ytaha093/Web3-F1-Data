@@ -49,7 +49,7 @@ const FavoritePopup = (props) => {
                             </tr>
                         </thead>
                         <tbody className=" justify-items-tops">
-                            {favoriteData.drivers != null ? favoriteData.drivers.map((fav, index) => (
+                            {favoriteData.drivers != null ? Array.from(new Set(favoriteData.drivers)).map((fav, index) => (
                                 <tr
                                     key={index}
                                     className="border-b hover:bg-gray-100">
@@ -69,7 +69,7 @@ const FavoritePopup = (props) => {
                             </tr>
                         </thead>
                         <tbody className=" justify-items-tops">
-                            {favoriteData.constructors != null ? favoriteData.constructors.map((fav, index) => (
+                            {favoriteData.constructors != null ? Array.from(new Set(favoriteData.constructors)).map((fav, index) => (
                                 <tr
                                     key={index}
                                     className="border-b hover:bg-gray-100">
@@ -89,7 +89,7 @@ const FavoritePopup = (props) => {
                             </tr>
                         </thead>
                         <tbody className=" justify-items-tops">
-                            {favoriteData.circuits != null ? favoriteData.circuits.map((fav, index) => (
+                            {favoriteData.circuits != null ? Array.from(new Set(favoriteData.circuits)).map((fav, index) => (
                                 <tr
                                     key={index}
                                     className="border-b hover:bg-gray-100">

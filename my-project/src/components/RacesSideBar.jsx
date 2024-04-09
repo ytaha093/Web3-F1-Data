@@ -24,7 +24,7 @@ const SideBar = (props) => {
 
 
 
-
+  // get all the races data in a selected year, also gets circuit data to display in race info section
   useEffect(() => {
     const fetchData = async () => {
       try {
