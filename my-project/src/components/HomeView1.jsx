@@ -41,7 +41,7 @@ export const HomeView1 = (props) => {
 
 
   return (
-    <div className="flex flex-wrap bg-cover bg-[url('/bgg.jpg')]">
+    <div className="flex flex-wrap bg-cover bg-[url('/assets/bgg.jpg')]">
       <Header supabase={props.supabase} />
       <SideBar supabase={props.supabase} />
       {displayMainCard()}
