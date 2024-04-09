@@ -9,6 +9,7 @@ const Header = (props) => {
     const { setShowStanding } = useContext(AppContext);
     const { setIsLoading } = useContext(AppContext);
     const { setshowCard } = useContext(AppContext);
+    const { favoriteData } = useContext(AppContext);
 
 
     const handleChange = (e) => {
@@ -59,15 +60,23 @@ const Header = (props) => {
                 <div className="w-1/5 flex justify-center items-center gap-6">
                     <button
                         type="button"
-                        className="bg-gray-600 hover:bg-yellow-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                        className={(Object.keys(favoriteData).length != 0) ? "bg-gray-600 hover:bg-yellow-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" :
+                            "bg-gray-600 text-white py-2 px-5 rounded-full"}
+
+
                         onClick={() => {
-                            setshowCard("favorite");
+                            console.log(favoriteData)
+                            if (Object.keys(favoriteData).length != 0) {
+                                setshowCard("favorite");
+                            }
                         }}>
                         Favorites
                     </button>
                     <button
                         type="button"
-                        className=" bg-gray-600 hover:bg-blue-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                        className=" bg-gray-600 hover:bg-blue-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" onClick={() => {
+                            setshowCard("about");
+                        }}
                     >
                         About
                     </button>

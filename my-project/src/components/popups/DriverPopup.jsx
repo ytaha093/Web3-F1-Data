@@ -16,7 +16,6 @@ const DriverPopup = (props) => {
                     .from("drivers")
                     .select("*")
                     .eq("driverId", driverID);
-                console.log(data)
                 setDriverDaTa(data[0]);
                 if (error) {
                     throw error;

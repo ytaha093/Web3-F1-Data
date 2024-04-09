@@ -6,6 +6,9 @@ const ConstructorPopup = (props) => {
     const { constID } = useContext(AppContext);
     const { constData, setConstDaTa } = useContext(AppContext);
     const { setshowCard } = useContext(AppContext);
+    const { favoriteData, setFavoriteData } = useContext(AppContext);
+
+
 
 
     useEffect(() => {
@@ -71,7 +74,16 @@ const ConstructorPopup = (props) => {
                                 <button
                                     type="button"
                                     className="max-h-[40px] h-1/2 flex items-center bg-gray-200 hover:bg-gray-400 text-black border-2 border-black py-2 px-2 rounded focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
-                                >
+                                    onClick={() => {
+                                        let name = constData.name;
+                                        let newfav = favoriteData;
+                                        if (newfav.constructors == null) {
+                                            newfav.constructors = [name]
+                                        } else {
+                                            newfav.constructors = [name, ...newfav.constructors]
+                                        }
+                                        setFavoriteData(newfav);
+                                    }}>
                                     Favorite
                                 </button>
                             </td>

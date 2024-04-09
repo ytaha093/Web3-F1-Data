@@ -49,7 +49,7 @@ const FavoritePopup = (props) => {
                                     className="border-b hover:bg-gray-100">
                                     <td className="pl-1 py-2">{fav}</td>
                                 </tr>
-                            )) : ""}
+                            )) : <tr></tr>}
                         </tbody>
                     </table>
 
@@ -58,18 +58,18 @@ const FavoritePopup = (props) => {
                         <thead className="sticky top-0 bg-gray-200 z-50">
                             <tr>
                                 <th className="pl-1 py-2 text-left text-gray-700 uppercase tracking-wider font-semibold">
-                                    Contructors
+                                    constructors
                                 </th>
                             </tr>
                         </thead>
                         <tbody className=" justify-items-tops">
-                            {favoriteData.contructors != null ? favoriteData.contructors.map((fav, index) => (
+                            {favoriteData.constructors != null ? favoriteData.constructors.map((fav, index) => (
                                 <tr
                                     key={index}
                                     className="border-b hover:bg-gray-100">
                                     <td className="pl-1 py-2">{fav}</td>
                                 </tr>
-                            )) : ""}
+                            )) : <tr></tr>}
                         </tbody>
                     </table>
 
@@ -89,7 +89,7 @@ const FavoritePopup = (props) => {
                                     className="border-b hover:bg-gray-100">
                                     <td className="pl-1 py-2">{fav}</td>
                                 </tr>
-                            )) : ""}
+                            )) : <tr></tr>}
                         </tbody>
                     </table>
                 </div>
