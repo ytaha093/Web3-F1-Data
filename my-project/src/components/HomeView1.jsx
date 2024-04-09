@@ -34,7 +34,6 @@ export const HomeView1 = (props) => {
       <SideBar supabase={props.supabase} />
       {displayMainCard()}
       {displayMiniCard()}
-      <DriverPopup supabase={props.supabase} />
     </div>
   );
 

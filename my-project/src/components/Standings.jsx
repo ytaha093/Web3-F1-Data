@@ -10,7 +10,7 @@ const Standings = (props) => {
   const { conStanding, setConStanding } = useContext(AppContext);
   const { driverStanding, setDriverStanding } = useContext(AppContext);
   const { setshowCard } = useContext(AppContext);
-  const { setConstID } = useContext(AppContext);
+  const { setConstID, setDriverID } = useContext(AppContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +20,6 @@ const Standings = (props) => {
           .select("points, position, wins, constructors(*)")
           .eq("raceId", raceID)
           .order("position", { ascending: true });
-
         let sortedData = data.sort((a, b) => a.position - b.position);
         setConStanding(sortedData);
       } catch (error) {
@@ -39,7 +38,6 @@ const Standings = (props) => {
           .select(" points, position, wins ,drivers(*)")
           .eq("raceId", raceID)
           .order("position", { ascending: true });
-        console.log(data);
         setDriverStanding(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -83,7 +81,11 @@ const Standings = (props) => {
                     <tr key={index} className="border-b hover:bg-gray-100">
                       <td className="pl-1 py-2">{result.position}</td>
                       <td className="pl-1 py-2">
-                        <span className=" underline hover:cursor-pointer hover:text-stone-500">
+                        <span className=" underline hover:cursor-pointer hover:text-stone-500"
+                          onClick={() => {
+                            setshowCard("driver");
+                            setDriverID(result.drivers.driverId);
+                          }}>
                           {result.drivers.forename +
                             " " +
                             result.drivers.surname}
