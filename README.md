@@ -1,3 +1,3 @@
 User authentication disabled
 
-web3asg2-jet.vercel.app
+https://web3asg2-jet.vercel.app
