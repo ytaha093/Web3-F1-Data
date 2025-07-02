@@ -95,7 +95,7 @@ const ConstructorPopup = (props) => {
                                         }
                                         setFavoriteData(newfav);
                                     }}>
-                                    Favorite
+                                    {isFavorited() ? "Favorited" : "Favorite"}
                                 </button>
                             </td>
                         </tr>

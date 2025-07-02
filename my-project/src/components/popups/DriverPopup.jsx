@@ -102,7 +102,7 @@ const DriverPopup = (props) => {
                                         }
                                         setFavoriteData(newfav);
                                     }}>
-                                    Favorite
+                                    {isFavorited() ? "Favorited" : "Favorite"}
                                 </button>
                             </td>
                         </tr>
