@@ -1,11 +1,17 @@
 import { useContext } from "react";
 import { AppContext } from "../../context.jsx";
+import { useState, useEffect } from "react";
 
 const AboutPopup = (props) => {
+    const { setshowCard } = useContext(AppContext);
+    const [load, setLoad] = useState(false);
 
-  const { setshowCard } = useContext(AppContext);
+    useEffect(() => {
+        setLoad(true)
+    }, []);
+
   return (
-    <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg">
+    <div className={(load ? "opacity-100" : "opacity-0") + " fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg transition duration-100"}>
       <div className="max-h-[75vh] max-w-[45%] min-w-[500px] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4 relative">
         <div className="mb-4 flex justify-between">
           <span className="text-3xl font-bold">About Us</span>

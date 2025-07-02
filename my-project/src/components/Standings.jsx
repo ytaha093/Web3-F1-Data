@@ -127,26 +127,36 @@ const Standings = (props) => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  {conStanding.map((result, index) => (
-                    <tr key={index} className="border-b hover:bg-gray-100">
-                      <td className="pl-1 py-2">{result.position}</td>
-                      <td className="pl-1 py-2">
-                        <span
-                          className=" underline hover:cursor-pointer hover:text-stone-500"
-                          onClick={() => {
-                            setshowCard("contructor");
-                            setConstID(result.constructors.constructorId);
-                          }}
-                        >
-                          {result.constructors.name}
-                        </span>
-                      </td>
-                      <td className="pl-1 py-2">{result.points}</td>
-                      <td className="pl-1 py-2">{result.wins}</td>
-                    </tr>
-                  ))}
-                </tbody>
+                  <tbody>
+                    {conStanding.length === 0 ? (
+                      <tr>
+                        <td colSpan={5} className="text-center w-full">
+                          <div className="text-center w-full text-xl font-semibold">
+                            ❗No Constructor Standings this Season❗
+                          </div>
+                        </td>
+                      </tr>
+                    ) : (
+                      conStanding.map((result, index) => (
+                        <tr key={index} className="border-b hover:bg-gray-100">
+                          <td className="pl-1 py-2">{result.position}</td>
+                          <td className="pl-1 py-2">
+                            <span
+                              className="underline hover:cursor-pointer hover:text-stone-500"
+                              onClick={() => {
+                                setshowCard("contructor");
+                                setConstID(result.constructors.constructorId);
+                              }}
+                            >
+                              {result.constructors.name}
+                            </span>
+                          </td>
+                          <td className="pl-1 py-2">{result.points}</td>
+                          <td className="pl-1 py-2">{result.wins}</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
               </table>
             </div>
           </div>

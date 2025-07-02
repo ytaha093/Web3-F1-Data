@@ -3,7 +3,7 @@ import "./App.css";
 import Login from './components/LoginPage.jsx';
 import { AppContext } from "./context.jsx";
 import SideBar from "./components/RacesSideBar.jsx";
-import HomeView1 from "./components/HomeView1.jsx";
+import HomeView from "./components/HomeView.jsx";
 
 
 /** 
@@ -16,7 +16,7 @@ function App(props) {
 
   if (isLoggedIn) {
     return (
-      <HomeView1 supabase={props.supabase} />
+      <HomeView supabase={props.supabase} />
     );
   }
   else {

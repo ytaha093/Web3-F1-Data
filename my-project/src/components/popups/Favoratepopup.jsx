@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../context.jsx";
 import "../../SideBar.css";
 
@@ -13,16 +13,21 @@ import "../../SideBar.css";
 const FavoritePopup = (props) => {
     const { favoriteData, setFavoriteData } = useContext(AppContext);
     const { setshowCard } = useContext(AppContext);
+    const [load, setLoad] = useState(false);
+    
+        useEffect(() => {
+        setLoad(true)
+    }, []);
 
     return (
-        <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg">
+        <div className={(load ? "opacity-100" : "opacity-0") + " fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg transition duration-100"}>
             <div className="max-h-[785vh] max-w-[45%] min-w-[500px] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4 relative">
                 <div className="mb-4 flex justify-between">
                     <span className="text-3xl font-bold">Favorites</span>
                     <div className="flex w-full h-full justify-end gap-6">
                         <button
                             type="button"
-                            className="max-h-[40px] h-1/2 flex items-center bg-gray-200 hover:bg-gray-400 text-black border-2 border-black py-2 px-2 rounded focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                            className="max-h-[40px] h-1/2 flex items-center bg-red-500 hover:bg-red-600 text-black border-2 border-black py-2 px-2 rounded focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
                             onClick={() => {
                                 setFavoriteData({});
                             }}>

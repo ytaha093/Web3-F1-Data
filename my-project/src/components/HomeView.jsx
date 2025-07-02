@@ -19,7 +19,7 @@ import AboutPopup from './popups/AboutPopup.jsx';
 *
 * @return A dashboard full of F1 related components
 */
-export const HomeView1 = (props) => {
+export const HomeView = (props) => {
   const { showResult, showStanding, showCard } = useContext(AppContext);
 
 
@@ -51,4 +51,4 @@ export const HomeView1 = (props) => {
 
 }
 
-export default HomeView1;
+export default HomeView;

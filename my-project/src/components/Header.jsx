@@ -15,7 +15,7 @@ const Header = (props) => {
     const { setShowResult } = useContext(AppContext);
     const { setShowStanding } = useContext(AppContext);
     const { setIsLoading } = useContext(AppContext);
-    const { setshowCard } = useContext(AppContext);
+    const { showCard, setshowCard } = useContext(AppContext);
     const { favoriteData } = useContext(AppContext);
 
     // change state and close other views when changing year
@@ -32,7 +32,6 @@ const Header = (props) => {
                 const { data, error } = await props.supabase
                     .from("seasons")
                     .select("*")
-                    .gte("year", 2000)
                     .lte("year", 2023)
                     .order("year", { ascending: false });
 
@@ -68,9 +67,8 @@ const Header = (props) => {
                 <div className="w-1/5 flex justify-center items-center gap-6">
                     <button
                         type="button"
-                        className={(Object.keys(favoriteData).length != 0) ? "bg-gray-600 hover:bg-yellow-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" :
-                            "bg-gray-600 text-white py-2 px-5 rounded-full"}
-
+                        className={(Object.keys(favoriteData).length != 0) ? (showCard == "favorite" ? "bg-[#e8ca1e]": "bg-gray-600") + " hover:bg-[#e8ca1e] active:bg-[#b69500] text-white py-2 px-5 rounded-full focus:outline-none transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95" :
+                            "bg-gray-400 text-gray-100 text-white py-2 px-5 rounded-full cursor-not-allowed transition-all duration-300 ease-in-out"}
 
                         onClick={() => {
                             if (Object.keys(favoriteData).length != 0) {
@@ -81,7 +79,7 @@ const Header = (props) => {
                     </button>
                     <button
                         type="button"
-                        className=" bg-gray-600 hover:bg-blue-600 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105" onClick={() => {
+                        className= {(showCard == "about" ? "bg-blue-600": "bg-gray-600") + " hover:bg-blue-600 active:bg-blue-800 text-white py-2 px-5 rounded-full focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 active:scale-95"} onClick={() => {
                             setshowCard("about");
                         }}
                     >

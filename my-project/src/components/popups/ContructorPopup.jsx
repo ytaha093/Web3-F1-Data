@@ -30,8 +30,19 @@ const ConstructorPopup = (props) => {
         fetchData();
     }, [constID]);
 
+    function isFavorited() {
+        console.log(constData)
+        if (favoriteData.constructors == null) {
+            return false
+        } else if (favoriteData.constructors.includes(constData.name)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     return (
-        <div className="fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg">
+        <div className={(constData.length == 0 ? "opacity-0" : "opacity-100") + " fixed inset-0 z-50 flex justify-center items-center backdrop-filter backdrop-blur-lg transition duration-100"}>
             <div className="max-h-[75vh] max-w-[45%] min-w-[500px] border-2 bg-white shadow-xl rounded-md border-gray-200 p-4 relative">
                 <div className="mb-4 flex justify-between">
                     <span className="text-3xl font-bold">Constructor Details</span>
@@ -73,10 +84,10 @@ const ConstructorPopup = (props) => {
                             <td colSpan="2" className="text-center py-4">
                                 <button
                                     type="button"
-                                    className="max-h-[40px] h-1/2 flex items-center bg-gray-200 hover:bg-gray-400 text-black border-2 border-black py-2 px-2 rounded focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+                                    className= {(isFavorited() ? "bg-[#e8ca1e] active:bg-[#b69500]": "bg-gray-200 hover:bg-gray-400") + " max-h-[40px] h-1/2 flex items-center text-black border-2 border-black py-2 px-2 rounded focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"}
                                     onClick={() => {
                                         let name = constData.name;
-                                        let newfav = favoriteData;
+                                        let newfav = {...favoriteData};
                                         if (newfav.constructors == null) {
                                             newfav.constructors = [name]
                                         } else {
